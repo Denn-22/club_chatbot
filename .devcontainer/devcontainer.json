@@ -1,0 +1,24 @@
+{
+  "name": "AlmanakKlub Fullstack",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [3000, 4000, 9001],
+  "portsAttributes": {
+    "3000": { "label": "Web (Next.js)" },
+    "4000": { "label": "API + Swagger (NestJS)" },
+    "9001": { "label": "MinIO Console" }
+  },
+  "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "mongodb.mongodb-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

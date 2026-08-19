@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #eef2e6;
+  /* garis kapur lapangan: lingkaran tengah + garis horizontal samar */
+  background-image: radial-gradient(
+      circle at 50% -180px,
+      transparent 259px,
+      rgba(22, 38, 61, 0.1) 260px,
+      rgba(22, 38, 61, 0.1) 263px,
+      transparent 264px
+    ),
+    linear-gradient(rgba(22, 38, 61, 0.05) 1px, transparent 1px);
+  background-size: auto, 100% 72px;
+}
+
+::selection {
+  background: #f5b82e;
+  color: #16263d;
+}
+:focus-visible {
+  outline: 3px solid #0e7a3c;
+  outline-offset: 2px;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #16263d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@layer components {
+  .select {
+    @apply bg-chalk border-2 border-ink px-3 py-2.5 text-sm shadow-hardSm cursor-pointer outline-none;
+  }
+  .chip {
+    @apply bg-paper border-2 border-ink text-xs font-semibold px-3 py-1 hover:bg-card transition-colors;
+  }
+  .badge {
+    @apply bg-ink text-chalk font-mono text-[11px] uppercase tracking-wider px-3 py-1;
+  }
+  .stat-card {
+    @apply bg-paper border-2 border-ink p-3;
+  }
+  .stat-label {
+    @apply font-mono text-[10px] uppercase tracking-[.18em] text-ink/50 mb-1;
+  }
+  .stat-value {
+    @apply text-lg font-bold leading-snug;
+  }
+  .section-title {
+    @apply font-display text-xs uppercase tracking-wide mb-2 flex items-center gap-2 before:content-[''] before:w-4 before:h-[3px] before:bg-grass;
+  }
+  .score-cell {
+    @apply px-5 py-4 border-r border-chalk/20 text-center;
+  }
+  .score-label {
+    @apply font-mono text-[10px] uppercase tracking-[.2em] text-chalk/50;
+  }
+  .score-value {
+    @apply font-mono text-3xl font-bold mt-1 text-chalk;
+  }
+  .chat-bubble-ai {
+    @apply bg-chalk border-2 border-ink p-3 shadow-hardSm max-w-[90%];
+  }
+  .chat-bubble-user {
+    @apply bg-card border-2 border-ink p-3 shadow-hardSm max-w-[90%] ml-auto;
+  }
+  .typing-dot {
+    animation: blink 1s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
