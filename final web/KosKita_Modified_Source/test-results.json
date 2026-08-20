@@ -1,0 +1,104 @@
+[
+  {
+    "id": "F-01",
+    "desc": "Filter kota \"Yogyakarta\" menampilkan hanya kos di kota tsb",
+    "pass": true,
+    "detail": "Lokasi hasil: [\"Yogyakarta — Jl. Kaliurang KM 5, Sleman\",\"Yogyakarta — Jl. Babarsari No. 12, Depok, Sleman\"]"
+  },
+  {
+    "id": "F-02",
+    "desc": "Pencarian kata kunci \"Melati\" menampilkan kos yang sesuai",
+    "pass": true,
+    "detail": "Hasil pencarian: [\"Kos Melati Residence\"]"
+  },
+  {
+    "id": "F-03",
+    "desc": "Menandai kos sebagai favorit tersimpan ke localStorage",
+    "pass": true,
+    "detail": "localStorage.koskita_favorit = [1]"
+  },
+  {
+    "id": "F-04",
+    "desc": "Halaman Favorit menampilkan kos yang telah ditandai",
+    "pass": true,
+    "detail": "Isi halaman Favorit: [\"Kos Melati Residence\"]"
+  },
+  {
+    "id": "F-05",
+    "desc": "Status tombol favorit di halaman detail konsisten dengan localStorage (♥ = sudah favorit)",
+    "pass": true,
+    "detail": "Isi tombol favorit di halaman detail = \"♥\""
+  },
+  {
+    "id": "F-06",
+    "desc": "Menghapus favorit memperbarui localStorage & menghilang dari halaman Favorit",
+    "pass": true,
+    "detail": "localStorage setelah dihapus = [], halaman Favorit kosong = true"
+  },
+  {
+    "id": "S-01",
+    "desc": "Filter (kota=Bandung, tipe=Putri) tersimpan ke sessionStorage setelah diubah",
+    "pass": true,
+    "detail": "sessionStorage.koskita_filter = {\"q\":\"\",\"kota\":\"Bandung\",\"tipe\":\"Putri\",\"maxHarga\":\"\"}"
+  },
+  {
+    "id": "S-02",
+    "desc": "Preferensi kota tersimpan sebagai Cookie saat filter kota diubah",
+    "pass": true,
+    "detail": "document.cookie = \"koskita_kota_preferensi=Bandung\""
+  },
+  {
+    "id": "S-03",
+    "desc": "Setelah reload, filter kota & tipe tetap terisi (dipulihkan dari sessionStorage)",
+    "pass": true,
+    "detail": "Nilai select setelah reload: kota=\"Bandung\", tipe=\"Putri\""
+  },
+  {
+    "id": "S-04",
+    "desc": "sessionStorage direset pada tab baru (kosong), namun kota otomatis terisi kembali dari Cookie (fallback)",
+    "pass": true,
+    "detail": "sessionStorage pada tab baru = null; kota (dari cookie) = \"Bandung\"; tipe = \"\" (tidak ikut cookie, hanya kota yang di-cookie-kan)"
+  },
+  {
+    "id": "S-05",
+    "desc": "localStorage favorit tetap ada pada tab baru (persisten per origin, bukan per tab)",
+    "pass": true,
+    "detail": "localStorage.koskita_favorit pada tab baru = []"
+  },
+  {
+    "id": "S-06",
+    "desc": "Pada profil/browser baru, localStorage & cookie kosong sehingga filter kota kembali ke default",
+    "pass": true,
+    "detail": "localStorage = null, jumlah cookie = 0, kota default = \"\""
+  },
+  {
+    "id": "SEC-01",
+    "desc": "Payload <script> pada kolom pencarian tidak dieksekusi (React auto-escape)",
+    "pass": true,
+    "detail": "dialog alert muncul = false; nilai input = \"<script>alert(\"XSS\")</script>\""
+  },
+  {
+    "id": "NF-RWD-mobile",
+    "desc": "Tidak ada horizontal overflow pada breakpoint mobile (375px)",
+    "pass": true,
+    "detail": "scrollWidth > innerWidth = false"
+  },
+  {
+    "id": "NF-RWD-tablet",
+    "desc": "Tidak ada horizontal overflow pada breakpoint tablet (768px)",
+    "pass": true,
+    "detail": "scrollWidth > innerWidth = false"
+  },
+  {
+    "id": "NF-RWD-desktop",
+    "desc": "Tidak ada horizontal overflow pada breakpoint desktop (1440px)",
+    "pass": true,
+    "detail": "scrollWidth > innerWidth = false"
+  },
+  {
+    "id": "NF-PERF-01",
+    "desc": "Waktu muat halaman /kos tergolong wajar pada mode development (<3000ms)",
+    "pass": true,
+    "detail": "Total waktu goto()->load = 189ms (mode next dev, belum production build); timing = {\"domContentLoaded\":46,\"loadEvent\":187}"
+  }
+]
